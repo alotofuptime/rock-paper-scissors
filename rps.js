@@ -1,5 +1,7 @@
 "use strict";
 
+playGame(5);
+
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
   const randomIndex = Math.floor(Math.random() * choices.length);
@@ -33,4 +35,33 @@ function playRound(cpuSelection, plyrSelection) {
   };
 
   return round;
+}
+
+function playGame(rounds) {
+  let plyrScore = 0;
+  let cpuScore = 0;
+  let currentRd = 1;
+  let rd;
+
+  while (currentRd <= rounds) {
+    rd = playRound(getComputerChoice(), getPlayerChoice());
+
+    if (rd.tie) {
+      plyrScore++;
+      cpuScore++;
+    } else if (rd.playerWon) {
+      plyrScore++;
+    } else cpuScore++;
+
+    let stats = `Round: ${currentRd} Player: ${plyrScore} CPU: ${cpuScore}`;
+    console.log(stats);
+    console.log(rd.message.concat("\n", rd.details));
+    currentRd++;
+  }
+
+  if (plyrScore === cpuScore) {
+    console.log("It's a tie!");
+  } else if (plyrScore > cpuScore) {
+    console.log("You win!");
+  } else console.log("You lose :(");
 }
