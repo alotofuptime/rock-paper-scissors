@@ -13,9 +13,11 @@ function getPlayerChoice() {
 
 function playRound(cpuSelection, plyrSelection) {
   const tie = cpuSelection === plyrSelection;
-  const playerWins = !tie && (plyrSelection === "rock") && (cpuSelection !== "paper")
+  const playerWins = !tie && (
+    (plyrSelection === "rock") && (cpuSelection !== "paper")
     || (plyrSelection === "paper") && (cpuSelection !== "scissors")
-    || (plyrSelection === "scissors") && (cpuSelection !== "rock");
+    || (plyrSelection === "scissors") && (cpuSelection !== "rock")
+  );
 
 
   const roundResult = tie ? "It's a tie" : playerWins ? "You win" : "You lose";
