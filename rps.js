@@ -12,22 +12,23 @@ function getPlayerChoice() {
 }
 
 function playRound(cpuSelection, plyrSelection) {
-  const winMessage = `${plyrSelection} beats ${cpuSelection}!`;
-  const lossMessage = `${cpuSelection} beats ${plyrSelection}!`;
-  const playerWins = (plyrSelection === "rock") && (cpuSelection !== "paper")
+  const tie = cpuSelection === plyrSelection;
+  const playerWins = !tie && (plyrSelection === "rock") && (cpuSelection !== "paper")
     || (plyrSelection === "paper") && (cpuSelection !== "scissors")
     || (plyrSelection === "scissors") && (cpuSelection !== "rock");
 
-  if (cpuSelection === plyrSelection) {
-    return `It's a tie! You both chose ${cpuSelection}`;
-  }
 
-  const roundResult = playerWins ? "win" : "lose";
-  const resultMessage = `You ${roundResult}!`;
+  const roundResult = tie ? "It's a tie" : playerWins ? "You win" : "You lose";
+  const roundDetails = tie ? `You both chose ${cpuSelection}.`
+    : playerWins ? `${plyrSelection} beats ${cpuSelection}.`
+      : `${cpuSelection} beats ${plyrSelection}.`;
 
-  if (playerWins) {
-    return resultMessage.concat("\n", winMessage);
-  }
+  const round = {
+    playerWon: playerWins,
+    tie: tie,
+    message: `${roundResult}!`,
+    details: roundDetails,
+  };
 
-  return resultMessage.concat("\n", lossMessage);
+  return round;
 }
