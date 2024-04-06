@@ -1,5 +1,19 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: 16px;
+}
+
 header {
   text-align: center;
+}
+
+h2 {
+  margin: 0;
 }
 
 main {
@@ -9,8 +23,35 @@ main {
   flex-direction: column;
 }
 
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: lightgray;
+  border-radius: 1em;
+  padding: 1em;
+  margin: 1em 0;
+  min-width: 75%;
+}
+
+.score {
+  display: flex;
+  justify-content: space-between;
+  min-height: 300px;
+  width: 100%;
+  padding: 1em 2.75em;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
 button {
-  margin: 0.5em 0.5em;
   padding: 0.5em 1em;
   border-radius: 0.5em;
   background-color: skyblue;
@@ -25,8 +66,4 @@ button:hover {
 
 button:active {
   background-color: deepskyblue;
-}
-
-.score {
-  min-height: 300px;
 }
