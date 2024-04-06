@@ -1,0 +1,32 @@
+header {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+button {
+  margin: 0.5em 0.5em;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  background-color: skyblue;
+  color: whitesmoke;
+  font-size: 1.25em;
+  border: none;
+}
+
+button:hover {
+  background-color: dodgerblue;
+}
+
+button:active {
+  background-color: deepskyblue;
+}
+
+.score {
+  min-height: 300px;
+}
