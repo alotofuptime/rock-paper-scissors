@@ -44,7 +44,17 @@ const playRound = (cpuChoice, playerChoice) => {
 };
 
 const playerOptions = document.querySelector('.options');
-playerOptions.addEventListener('click', (e) => {
-  const playerChoice = e.target.classList.value;
-  console.log(playerChoice);
+const scoreContainer = document.querySelector('.score');
+const roundResults = document.createElement('h3');
+const roundDetails = document.createElement('p');
+
+// TODO: Separate the event listener into a function
+playerOptions.addEventListener('click', (event) => {
+  if (event.target.tagName !== 'BUTTON') return;
+  const playerChoice = getPlayerChoice(event);
+  const cpuChoice = getComputerChoice();
+  const round = playRound(cpuChoice, playerChoice);
+  roundResults.textContent = round.results;
+  roundDetails.textContent = round.details;
+  scoreContainer.append(roundResults, roundDetails);
 });
