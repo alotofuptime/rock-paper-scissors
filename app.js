@@ -24,6 +24,25 @@ const playerWins = (cpuChoice, playerChoice) => {
   return playerWinsWithRock || playerWinsWithPaper || playerWinsWithScissors;
 };
 
+const isTie = (cpuChoice, playerChoice) => cpuChoice === playerChoice;
+
+const playRound = (cpuChoice, playerChoice) => {
+  const result = {
+    tie: "It's a tie 🤝",
+    playerWins: 'You win 🎉',
+    cpuWins: 'You lose 🤕',
+    details: {
+      tie: `you both chose ${cpuChoice}.`,
+      playerWins: `${playerChoice} beats ${cpuChoice}.`,
+      cpuWins: `${cpuChoice} beats ${playerChoice}.`,
+    },
+  };
+
+  if (isTie(cpuChoice, playerChoice)) return { results: result.tie, details: result.details.tie };
+  if (playerWins(cpuChoice, playerChoice)) return { results: result.playerWins, details: result.details.playerWins };
+  return { results: result.cpuWins, details: result.details.cpuWins };
+};
+
 const playerOptions = document.querySelector('.options');
 playerOptions.addEventListener('click', (e) => {
   const playerChoice = e.target.classList.value;
