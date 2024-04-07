@@ -18,9 +18,9 @@ const getPlayerChoice = (event) => {
 };
 
 const playerWins = (cpuChoice, playerChoice) => {
-  const playerWinsWithRock = playerChoice === choices.rock && cpuChoice !== choices.paper;
-  const playerWinsWithPaper = playerChoice === choices.paper && cpuChoice !== choices.scissors;
-  const playerWinsWithScissors = playerChoice === choices.scissors && cpuChoice !== choices.rock;
+  const playerWinsWithRock = playerChoice === choices.rock && cpuChoice === choices.scissors;
+  const playerWinsWithPaper = playerChoice === choices.paper && cpuChoice === choices.rock;
+  const playerWinsWithScissors = playerChoice === choices.scissors && cpuChoice === choices.paper;
   return playerWinsWithRock || playerWinsWithPaper || playerWinsWithScissors;
 };
 
