@@ -12,6 +12,11 @@ const getComputerChoice = () => {
   return cpuChoices[randomIndex];
 };
 
+const getPlayerChoice = (event) => {
+  const playerChoice = event.target.classList.value;
+  return playerChoice;
+};
+
 const playerWins = (cpuChoice, playerChoice) => {
   const playerWinsWithRock = playerChoice === choices.rock && cpuChoice !== choices.paper;
   const playerWinsWithPaper = playerChoice === choices.paper && cpuChoice !== choices.scissors;
