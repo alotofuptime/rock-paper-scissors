@@ -128,6 +128,8 @@ const newGameEventHandler = (event) => {
     playerOptions.addEventListener('click', renderRound);
   } else {
     resetGame();
+    const playerOptions = document.querySelector('.options');
+    playerOptions.addEventListener('click', renderRound);
   }
 };
 
