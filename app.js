@@ -6,6 +6,38 @@ const choices = {
   scissors: 'scissors',
 };
 
+const scoreContainer = document.querySelector('.score');
+const playerScore = document.querySelector('.player-score');
+const cpuScore = document.querySelector('.cpu-score');
+const roundResults = document.createElement('h3');
+const roundDetails = document.createElement('p');
+
+const createPlayerOptions = () => {
+  const options = document.createElement('div');
+  const rockBtn = document.createElement('button');
+  const paperBtn = document.createElement('button');
+  const scissorsBtn = document.createElement('button');
+
+  options.className = 'options';
+  rockBtn.className = 'rock';
+  paperBtn.className = 'paper';
+  scissorsBtn.className = 'scissors';
+
+  rockBtn.textContent = 'Rock';
+  paperBtn.textContent = 'Paper';
+  scissorsBtn.textContent = 'Scissors';
+
+  options.append(rockBtn, paperBtn, scissorsBtn);
+
+  return options;
+};
+
+const renderPlayerOptions = () => {
+  const controls = document.querySelector('.controls');
+  const options = createPlayerOptions();
+  controls.parentNode.insertBefore(options, controls);
+};
+
 const getComputerChoice = () => {
   const cpuChoices = Object.values(choices);
   const randomIndex = Math.floor(Math.random() * cpuChoices.length);
