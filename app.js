@@ -106,7 +106,6 @@ const renderRound = (event) => {
   }
 };
 
-// ! When game is over, playerOptions are reinstated after user presses quit
 const resetGame = () => {
   [roundDetails, roundResults].forEach((elem) => (elem.textContent = ''));
   [cpuScore, playerScore].forEach((elem) => (elem.textContent = '0'));
@@ -119,7 +118,6 @@ const removePlayerOptions = () => {
   }
 };
 
-// TODO: Fix logic so that playerOptions eventListener gets reinstated for new games
 const newGameEventHandler = (event) => {
   if (event.target.className !== 'new-game') return;
   if (document.querySelector('.options') === null) {
