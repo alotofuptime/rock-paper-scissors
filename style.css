@@ -29,7 +29,7 @@ main {
   flex-direction: column;
 }
 
-.scoreboard {
+.score-card {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +38,14 @@ main {
   border-radius: 1em;
   padding: 1em;
   margin: 1em 0;
-  min-width: 75%;
+}
+
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-grow: 1;
+  min-width: 200px;
 }
 
 .score {
@@ -46,7 +53,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  min-height: 300px;
+  flex-basis: 300px;
   width: 100%;
   padding: 1em 2.75em;
 }
@@ -57,6 +64,17 @@ main {
   align-items: center;
   flex-wrap: wrap;
   gap: 1em;
+}
+.controls {
+  display: flex;
+  align-self: center;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
 }
 
 button {
@@ -70,6 +88,7 @@ button {
 
 button:hover {
   background-color: dodgerblue;
+  cursor: pointer;
 }
 
 button:active {
