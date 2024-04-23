@@ -58,6 +58,12 @@ const playerWins = (cpuChoice, playerChoice) => {
 
 const isTie = (cpuChoice, playerChoice) => cpuChoice === playerChoice;
 
+const updateScore = (...elements) => {
+  elements.forEach((elem) => {
+    elem.textContent++;
+  });
+};
+
 const playRound = (cpuChoice, playerChoice) => {
   const result = {
     tie: "It's a tie 🤝",
