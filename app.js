@@ -100,4 +100,48 @@ const renderRound = (event) => {
   roundResults.textContent = round.results;
   roundDetails.textContent = round.details;
   scoreContainer.append(roundResults, roundDetails);
-});
+  // TODO: Fix logic so that playerOptions eventListener gets reinstated for new games
+  if (gameIsOver()) {
+    playerOptions.removeEventListener('click', renderRound);
+  }
+};
+
+// ! When game is over, playerOptions are reinstated after user presses quit
+const resetGame = () => {
+  [roundDetails, roundResults].forEach((elem) => (elem.textContent = ''));
+  [cpuScore, playerScore].forEach((elem) => (elem.textContent = '0'));
+};
+
+const removePlayerOptions = () => {
+  const playerOptions = document.querySelector('.options');
+  if (playerOptions !== null) {
+    playerOptions.remove();
+  }
+};
+
+// TODO: Fix logic so that playerOptions eventListener gets reinstated for new games
+const newGameEventHandler = (event) => {
+  if (event.target.className !== 'new-game') return;
+  if (document.querySelector('.options') === null) {
+    renderPlayerOptions();
+    const playerOptions = document.querySelector('.options');
+    playerOptions.addEventListener('click', renderRound);
+  } else {
+    resetGame();
+  }
+};
+
+const quitGameEventHandler = (event) => {
+  resetGame();
+  removePlayerOptions();
+};
+
+const playGame = () => {
+  const newGameBtn = document.querySelector('.new-game');
+  const quitGameBtn = document.querySelector('.quit-game');
+
+  newGameBtn.addEventListener('click', newGameEventHandler);
+  quitGameBtn.addEventListener('click', quitGameEventHandler);
+};
+
+playGame();
