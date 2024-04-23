@@ -87,10 +87,10 @@ const playRound = (cpuChoice, playerChoice) => {
   return { results: result.cpuWins, details: result.details.cpuWins };
 };
 
-const playerOptions = document.querySelector('.options');
-const scoreContainer = document.querySelector('.score');
-const roundResults = document.createElement('h3');
-const roundDetails = document.createElement('p');
+const gameIsOver = () => {
+  const finalScoreReached = Number(cpuScore.textContent) === 5 || Number(playerScore.textContent) === 5;
+  return finalScoreReached;
+};
 
 // TODO: Separate the event listener into a function
 playerOptions.addEventListener('click', (event) => {
