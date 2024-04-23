@@ -76,8 +76,14 @@ const playRound = (cpuChoice, playerChoice) => {
     },
   };
 
-  if (isTie(cpuChoice, playerChoice)) return { results: result.tie, details: result.details.tie };
-  if (playerWins(cpuChoice, playerChoice)) return { results: result.playerWins, details: result.details.playerWins };
+  if (isTie(cpuChoice, playerChoice)) {
+    return { results: result.tie, details: result.details.tie };
+  }
+  if (playerWins(cpuChoice, playerChoice)) {
+    updateScore(playerScore);
+    return { results: result.playerWins, details: result.details.playerWins };
+  }
+  updateScore(cpuScore);
   return { results: result.cpuWins, details: result.details.cpuWins };
 };
 
