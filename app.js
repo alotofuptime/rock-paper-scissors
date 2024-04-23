@@ -92,12 +92,11 @@ const gameIsOver = () => {
   return finalScoreReached;
 };
 
-// TODO: Separate the event listener into a function
-playerOptions.addEventListener('click', (event) => {
-  if (event.target.tagName !== 'BUTTON') return;
+const renderRound = (event) => {
   const playerChoice = getPlayerChoice(event);
   const cpuChoice = getComputerChoice();
   const round = playRound(cpuChoice, playerChoice);
+  const playerOptions = document.querySelector('.options');
   roundResults.textContent = round.results;
   roundDetails.textContent = round.details;
   scoreContainer.append(roundResults, roundDetails);
